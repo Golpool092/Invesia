@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инвестиции и как на них заработать | MillsCome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --dark: #212529;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Кнопка "На главную" */
+        .home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        
+        .home-btn a {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .home-btn a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 0 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        article {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-top: 2.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin-top: 1.8rem;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight {
+            background-color: rgba(67, 97, 238, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--light);
+        }
+        
+        tr:hover {
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+        }
+        
+        .quote {
+            font-style: italic;
+            color: var(--gray);
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .author {
+            font-weight: 600;
+            color: var(--dark);
+            margin-top: 0.5rem;
+        }
+        
+        .warning {
+            background-color: rgba(247, 37, 133, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        
+        .steps {
+            counter-reset: step-counter;
+            margin: 2rem 0;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .ad-telegram {
+            background: rgba(67, 97, 238, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: center;
+            border: 1px dashed var(--primary);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+                margin-top: 1rem;
+            }
+            
+            article {
+                padding: 1.5rem;
+            }
+            
+            .home-btn {
+                top: 10px;
+                left: 10px;
+            }
+            
+            .home-btn a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        article {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .highlight, .warning, table, .steps {
+            animation: fadeIn 0.4s ease forwards;
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Кнопка "На главную" -->
+    <div class="home-btn">
+        <a href="https://golpool092.github.io/main/">← На главную</a>
+    </div>
+    
+    <header>
+        <div class="container">
+            <h1>Инвестиции и как на них заработать</h1>
+            <p class="subtitle">Полное руководство по созданию капитала: от первых шагов до продвинутых стратегий</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Реклама Telegram в начале -->
+        <div class="ad-telegram">
+            <p style="margin-bottom: 1rem; font-weight: 500;">🚀 Больше полезных материалов в нашем <a href="https://t.me/MillsCome" target="_blank" style="color: var(--primary); text-decoration: underline;">Telegram-канале</a></p>
+            <a href="https://t.me/MillsCome" class="btn" target="_blank" style="background: linear-gradient(135deg, #0088cc, #005580);">Подписаться</a>
+        </div>
+        
+        <article>
+            <p>Инвестиции — это не просто способ сохранить деньги, но и мощный инструмент создания капитала. В этой статье мы разберём, как начать инвестировать с любой суммой, какие инструменты выбрать и как избежать типичных ошибок.</p>
+            
+            <h2>Почему инвестиции — это важно?</h2>
+            <p>Среднегодовая инфляция в России за последние 10 лет — около 6%. Это значит, что деньги под подушкой теряют стоимость. Инвестиции помогают:</p>
+            
+            <ul>
+                <li><strong>Превзойти инфляцию</strong> — сохранить и приумножить покупательную способность</li>
+                <li><strong>Создать пассивный доход</strong> — получать деньги без активных усилий</li>
+                <li><strong>Обеспечить финансовую свободу</strong> — независимость от работы по найму</li>
+                <li><strong>Реализовать крупные цели</strong> — покупка жилья, образование детей, ранний выход на пенсию</li>
+            </ul>
+            
+            <div class="highlight">
+                <p>По данным S&P 500, среднегодовая доходность фондового рынка США за последние 100 лет — около 10%. Это в 5 раз больше, чем по банковским вкладам!</p>
+            </div>
+            
+            <h2>С чего начать: 5 шагов для новичка</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <h3>Определите финансовую цель</h3>
+                    <p>Чётко сформулируйте: сколько нужно и к какому сроку. Примеры:</p>
+                    <ul>
+                        <li>Накопить 2 млн руб. за 5 лет на первоначальный взнос по ипотеке</li>
+                        <li>Создать пассивный доход 50 тыс. руб./мес к 50 годам</li>
+                        <li>Сохранить 500 тыс. руб. от инфляции на 3 года</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <h3>Проанализируйте свои финансы</h3>
+                    <p>Правило 50/30/20:</p>
+                    <ul>
+                        <li>50% дохода — обязательные расходы (жильё, еда, транспорт)</li>
+                        <li>30% — желаемые траты (развлечения, хобби)</li>
+                        <li>20% — сбережения и инвестиции</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <h3>Сформируйте "подушку безопасности"</h3>
+                    <p>Перед инвестициями создайте резерв на 3-6 месяцев расходов. Храните в:</p>
+                    <ul>
+                        <li>Банковских вкладах</li>
+                        <li>Наличной валюте</li>
+                        <li>Облигациях с высокой ликвидностью</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <h3>Выберите брокера</h3>
+                    <p>Критерии выбора:</p>
+                    <table>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>Что важно</th>
+                        </tr>
+                        <tr>
+                            <td>Надёжность</td>
+                            <td>Лицензия ЦБ, срок работы</td>
+                        </tr>
+                        <tr>
+                            <td>Комиссии</td>
+                            <td>За сделки, обслуживание, вывод</td>
+                        </tr>
+                        <tr>
+                            <td>Инструменты</td>
+                            <td>Доступ к нужным вам рынкам</td>
+                        </tr>
+                        <tr>
+                            <td>Платформа</td>
+                            <td>Удобство мобильного приложения</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="step">
+                    <h3>Начните с малого</h3>
+                    <p>Первые инвестиции можно сделать даже с 1 000 руб. Главное — начать и выработать привычку.</p>
+                </div>
+            </div>
+            
+            <!-- Реклама в середине статьи -->
+            <div class="ad-telegram" style="background: var(--light);">
+                <p style="font-style: italic; margin-bottom: 0.5rem;">Тут могла быть ваша реклама</p>
+                <p>Размещаем полезные материалы для инвесторов</p>
+                <a href="https://t.me/MillsCome" target="_blank" style="color: var(--primary); font-weight: 500; text-decoration: underline;">Подробнее в Telegram →</a>
+            </div>
+            
+            <h2>Куда инвестировать: обзор инструментов</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Инструмент</th>
+                        <th>Доходность</th>
+                        <th>Риск</th>
+                        <th>Срок</th>
+                        <th>Минимальная сумма</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Банковские вклады</td>
+                        <td>4-8% годовых</td>
+                        <td>Низкий</td>
+                        <td>1-3 года</td>
+                        <td>1 000 руб.</td>
+                    </tr>
+                    <tr>
+                        <td>Облигации (ОФЗ)</td>
+                        <td>7-12%</td>
+                        <td>Низкий</td>
+                        <td>1-10 лет</td>
+                        <td>1 000 руб.</td>
+                    </tr>
+                    <tr>
+                        <td>Акции</td>
+                        <td>10-30%</td>
+                        <td>Средний/высокий</td>
+                        <td>5+ лет</td>
+                        <td>100 руб.</td>
+                    </tr>
+                    <tr>
+                        <td>ETF</td>
+                        <td>8-15%</td>
+                        <td>Средний</td>
+                        <td>3+ лет</td>
+                        <td>1 000 руб.</td>
+                    </tr>
+                    <tr>
+                        <td>Недвижимость</td>
+                        <td>5-20%</td>
+                        <td>Средний</td>
+                        <td>10+ лет</td>
+                        <td>100 000 руб.</td>
+                    </tr>
+                    <tr>
+                        <td>Криптовалюты</td>
+                        <td>50-500%</td>
+                        <td>Очень высокий</td>
+                        <td>Высокорискованный</td>
+                        <td>100 руб.</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="warning">
+                <h3>Важно!</h3>
+                <p>Чем выше потенциальная доходность — тем выше риски. Диверсифицируйте портфель, не вкладывайте все средства в один актив.</p>
+            </div>
+            
+            <h2>Стратегии инвестирования</h2>
+            
+            <h3>1. Консервативная</h3>
+            <p><strong>Состав портфеля:</strong> 70% облигации, 20% ETF, 10% акции</p>
+            <p><strong>Доходность:</strong> 7-10% годовых</p>
+            <p><strong>Для кого:</strong> Близкие к пенсии, с низкой толерантностью к риску</p>
+            
+            <h3>2. Умеренная</h3>
+            <p><strong>Состав портфеля:</strong> 50% ETF, 30% акции, 20% облигации</p>
+            <p><strong>Доходность:</strong> 10-15% годовых</p>
+            <p><strong>Для кого:</strong> Средний возраст, горизонт 5-10 лет</p>
+            
+            <h3>3. Агрессивная</h3>
+            <p><strong>Состав портфеля:</strong> 70% акции, 20% ETF, 10% криптовалюты</p>
+            <p><strong>Доходность:</strong> 15-30% годовых</p>
+            <p><strong>Для кого:</strong> Молодые инвесторы с горизонтом 10+ лет</p>
+            
+            <!-- Вторая реклама в середине -->
+            <div class="ad-telegram pulse" style="background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(247, 37, 133, 0.1));">
+                <h3 style="color: var(--primary); margin-top: 0;">Хотите индивидуальный портфель?</h3>
+                <p>Мы помогаем подобрать стратегию под ваши цели</p>
+                <a href="https://t.me/MillsCome" class="btn" target="_blank" style="background: linear-gradient(135deg, #0088cc, #005580);">Консультация в Telegram</a>
+            </div>
+            
+            <h2>Типичные ошибки начинающих</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <h3>Инвестировать последние деньги</h3>
+                    <p>Сначала — финансовая подушка, потом — инвестиции.</p>
+                </div>
+                
+                <div class="step">
+                    <h3>Гнаться за быстрой прибылью</h3>
+                    <p>90% трейдеров теряют деньги на краткосрочных спекуляциях.</p>
+                </div>
+                
+                <div class="step">
+                    <h3>Не диверсифицировать портфель</h3>
+                    <p>"Все яйца в одной корзине" — верный путь к большим потерям.</p>
+                </div>
+                
+                <div class="step">
+                    <h3>Поддаваться эмоциям</h3>
+                    <p>Продажа на панике и покупка на ажиотаже — главные враги инвестора.</p>
+                </div>
+                
+                <div class="step">
+                    <h3>Не реинвестировать доходы</h3>
+                    <p>Сложный процент — восьмое чудо света (А. Эйнштейн).</p>
+                </div>
+            </div>
+            
+            <div class="quote">
+                <p>"Инвестирование — это процесс перекладывания денег из кармана нетерпеливого в карман терпеливого."</p>
+                <div class="author">— Уоррен Баффет</div>
+            </div>
+            
+            <h2>Как считать доходность?</h2>
+            
+            <p>Формула сложного процента:</p>
+            <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: monospace;">
+                Сумма = P × (1 + r/n)<sup>nt</sup><br>
+                Где:<br>
+                P — начальный капитал<br>
+                r — годовая процентная ставка<br>
+                n — количество начислений процентов в год<br>
+                t — количество лет
+            </div>
+            
+            <p>Пример: 100 000 руб. под 10% годовых с ежемесячной капитализацией через 10 лет:</p>
+            <p>100000 × (1 + 0.10/12)<sup>12×10</sup> ≈ 270 700 руб.</p>
+            
+            <!-- Третья реклама перед заключением -->
+            <div class="ad-telegram">
+                <h3 style="margin-top: 0;">🚀 ЗАКАЖИ РЕКЛАМУ! </h3>
+                <p>Подпишитесь на наш Telegram-канал и закажи рекламу для любого проекта! (законного) </p>
+                <a href="https://t.me/MillsCome" class="btn" target="_blank" style="background: linear-gradient(135deg, #0088cc, #005580);">Подписаться сейчас</a>
+            </div>
+            
+            <h2>Заключение</h2>
+            <p>Инвестиции — это не лотерея, а дисциплина. Главные правила:</p>
+            <ol>
+                <li>Начинайте как можно раньше — время работает на вас</li>
+                <li>Инвестируйте регулярно — даже небольшие суммы</li>
+                <li>Диверсифицируйте риски — не храните все в одном активе</li>
+                <li>Контролируйте эмоции — не поддавайтесь панике и ажиотажу</li>
+                <li>Постоянно обучайтесь — рынки меняются, ваши знания тоже должны</li>
+            </ol>
+            
+            <p>Помните: лучший момент для начала инвестиций — вчера. Следующий лучший момент — сегодня.</p>
+        </article>
+    </div>
+    
+    <footer>
+        <div style="margin-bottom: 1rem;">
+            <a href="https://t.me/MillsCome" target="_blank" style="display: inline-block; background: #0088cc; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 500;">
+                Наш Telegram-канал
+            </a>
+        </div>
+        <p>© 2024 MillsCome. Все права защищены. Информация предоставлена в образовательных целях и не является инвестиционной рекомендацией.</p>
+    </footer>
+    
+    <script>
+        // Анимация при прокрутке
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('h2, h3, .highlight, .warning, table, .steps, .ad-telegram');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.animation = 'fadeIn 0.6s ease forwards';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+            
+            // Плавная прокрутка для якорей
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
